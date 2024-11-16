@@ -1,20 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from typing import Any
-
+from goods.models import Categories
 
 def index(request) -> HttpResponse:
-    context: dict[str, Any] = {
+
+    categories = Categories.objects.all()
+
+    context = {
         'title': 'Home - Главная',
         'content': 'Магазин мебели HOME',
+        'categories': categories,
     }
 
     return render(request, 'main/index.html', context)
 
 
 def about(request) -> HttpResponse:
-    context: dict[str, Any] = {
+    context = {
         'title': 'Home - О нас',
         'content': 'О нас',
         'text_on_page': 'Очень крутой магаз'
