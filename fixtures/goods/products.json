@@ -50,7 +50,7 @@
             "description": "Кухонный стол для обеда с встроенной раковиной и стульями.",
             "image": "goods_images/kitchen_table.jpg",
             "price": "365.00",
-            "discount": "0.00",
+            "discount": "10.00",
             "quantity": 11,
             "category": 7
         }
@@ -90,9 +90,9 @@
             "name": "Прикроватный столик",
             "slug": "prikrovatnyj-stolik",
             "description": "Прикроватный столик с двумя выдвижными ящиками (цветок не входит в комплект).",
-            "image": "goods_images/bedside_table.jpg",
+            "image": "goods_images/strange_table.jpg",
             "price": "55.00",
-            "discount": "0.00",
+            "discount": "5.00",
             "quantity": 6,
             "category": 8
         }
@@ -132,9 +132,9 @@
             "name": "Растение",
             "slug": "rastenie",
             "description": "Растение для украшения вашего интерьера подарит свежесть и безмятежность обстановке.",
-            "image": "goods_images/plants.jpg",
+            "image": "goods_images/flower.jpg",
             "price": "10.00",
-            "discount": "0.00",
+            "discount": "10.00",
             "quantity": 17,
             "category": 12
         }
@@ -146,9 +146,9 @@
             "name": "Цветок стилизированный",
             "slug": "cvetok-stilizirovannyj",
             "description": "Дизайнерский цветок (возможно искусственный) для украшения интерьера.",
-            "image": "goods_images/flower.jpg",
+            "image": "goods_images/bedside_table.jpg",
             "price": "15.00",
-            "discount": "0.00",
+            "discount": "1.00",
             "quantity": 17,
             "category": 12
         }
@@ -160,7 +160,7 @@
             "name": "Прикроватный столик 2",
             "slug": "prikrovatnyj-stolik-2",
             "description": "Столик, довольно странный на вид, но подходит для размещения рядом с кроватью.",
-            "image": "goods_images/strange_table.jpg",
+            "image": "goods_images/set_of_tea_table_and_two_chairs_QCCC6NJ.jpg",
             "price": "25.00",
             "discount": "90.00",
             "quantity": 10,
