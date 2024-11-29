@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 {% load goods_tags %}
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="{% static "deps/css/my_css.css" %}">
     <!-- Стиль footer-a для главной страницы -->
     {% block css %}
+
     {% endblock %}
     <!-- Favicons for different platforms -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/apple-touch-icon.png" %}">
@@ -49,7 +51,7 @@
                         </li>
                         {% if not user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link  text-white" href="{% url "users:login" %}">Войти</a>
+                                <a class="nav-link  text-white" href="{% url "user:login" %}">Войти</a>
                             </li>
                         {% else %}
                             <li class="nav-item dropdown ">
@@ -58,8 +60,7 @@
                                     Мой профиль
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item  text-white" href="carts/cart.html">Корзина</a></li>
-                                    <li><a class="dropdown-item  text-white" href="{% url "users:profile" %}">Личный кабинет</a>
+                                    <li><a class="dropdown-item  text-white" href="{% url "user:profile" %}">Личный кабинет</a>
                                     </li>
                                     {% if user.is_admin or user.is_staff %}
                                         <li><a class="dropdown-item  text-white" href="{% url "admin:index" %}">Админ панель</a></li>
@@ -67,7 +68,7 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item  text-white" href="{% url "users:logout" %}">Выйти</a></li>
+                                    <li><a class="dropdown-item  text-white" href="{% url "user:logout" %}">Выйти</a></li>
                                 </ul>
                             </li>
                         {% endif %}
@@ -93,10 +94,13 @@
                             height="16">
                     </button>
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+                        {% cache 60 catalog_categories %}
                         {% tag_categories as categories %}
                         {% for category in categories %}
-                            <li><a class="dropdown-item text-white" href="{% url "catalog:index" category.slug %}">{{ category.name }}</a></li>
+                            <li><a class="dropdown-item text-white" href="{% url "catalog:index" category.slug %}">{{category.name}}</a></li>
                         {% endfor %}
+                        {% endcache %}
+
                     </ul>
                 </div>
                 <!-- Значек корзины, вызывает модальное окно -->
@@ -112,15 +116,15 @@
                 </div>
                 <div class="col-lg-10">
                     <!-- Контент на странице -->
-                     {% include "includes/notifications.html" %}
-                    {% block content %}{% endblock  %}
+                    {% include "includes/notifications.html" %}
+                    {% block content %}{% endblock %}
                 </div>
             </div>
         </div>
     </section>
 
     {% block footer %}{% endblock %}
-    
+
     <script src="{% static "deps/js/jquery/jquery-3.7.0.min.js" %}"></script>
     <script src="{% static "deps/js/jquery-ajax.js" %}"></script>
     <script src="{% static "deps/js/bootstrap/bootstrap.bundle.min.js" %}"></script>
